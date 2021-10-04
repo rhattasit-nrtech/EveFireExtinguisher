@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "707079458211",
+    "project_id": "evefireextinguisher",
+    "storage_bucket": "evefireextinguisher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707079458211:android:534f518a23cc0f1cccde16",
+        "android_client_info": {
+          "package_name": "com.flutterthailand.evefireextin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707079458211-lsun0619ilafhe6tkp6uvi77gppi5531.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtnofjb3JMl0iEtaRtyocmAi7fRsw0N9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707079458211-lsun0619ilafhe6tkp6uvi77gppi5531.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
