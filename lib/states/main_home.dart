@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evefireextin/models/extinguisher_model.dart';
 import 'package:evefireextin/utility/my_constant.dart';
+import 'package:evefireextin/widgets/show_progress.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +13,9 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
+  List<ExtinguisherModel> extinguisherModels = [];
+  bool load = true;
+
   @override
   void initState() {
     super.initState();
@@ -17,8 +23,23 @@ class _MainHomeState extends State<MainHome> {
   }
 
   Future<void> readData() async {
-    await Firebase.initializeApp().then((value) {
-      print('Firebase Initial Success');
+    await Firebase.initializeApp().then((value) async {
+      // print('Firebase Initial Success');
+      await FirebaseFirestore.instance
+          .collection('extinguisher')
+          .get()
+          .then((value) {
+        // print('value = ${value.docs}');
+        for (var item in value.docs) {
+          // print('sanpshot ==> ${item.data()}');
+          ExtinguisherModel model = ExtinguisherModel.fromMap(item.data());
+          print('name ===> ${model.name}');
+          setState(() {
+            load = false;
+            extinguisherModels.add(model);
+          });
+        }
+      });
     });
   }
 
@@ -29,7 +50,20 @@ class _MainHomeState extends State<MainHome> {
           title: Text(MyConstant.appName),
         ),
         body: LayoutBuilder(
-          builder: (context, constraints) => fieldSearch(constraints),
+          builder: (context, constraints) => Column(
+            children: [
+              fieldSearch(constraints),
+              load
+                  ? ShowProgress()
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      physics: ScrollPhysics(),
+                      itemCount: extinguisherModels.length,
+                      itemBuilder: (context, index) =>
+                          Text(extinguisherModels[index].name),
+                    ),
+            ],
+          ),
         ));
   }
 
