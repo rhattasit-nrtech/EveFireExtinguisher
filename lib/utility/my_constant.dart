@@ -7,12 +7,13 @@ class MyConstant {
   static String routAuthen = '/authen';
   static String routAdminService = '/adminService';
   static String routOfficerService = '/officerService';
+  static String routAddExtin = '/addExtin';
 
   static String appName = 'Eve Fire Extinguisher';
 
-  static Color primary = Colors.purple;
-  static Color dark = Colors.purple.shade900;
-  static Color lite = Colors.purple.shade200;
+  static Color primary = Colors.red.shade700;
+  static Color dark = Colors.black;
+  static Color lite = Colors.red.shade200;
 
   // method
   TextStyle h1Style() => TextStyle(
